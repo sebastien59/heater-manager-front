@@ -10,6 +10,7 @@ before_script:
 script: ng build --prod
 before_deploy:
 - ls -al
+- echo $TRAVIS_BUILD_DIR
 - openssl aes-256-cbc -K $encrypted_ec85574b3970_key -iv $encrypted_ec85574b3970_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_rsa
