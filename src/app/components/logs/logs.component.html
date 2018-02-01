@@ -1,0 +1,32 @@
+<div class="col-lg-5">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Plug Name</th>
+      <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let log of plugsLogs">
+      <td>{{ log.date }}</td>
+      <td>{{ (log.plug != null)?log.plug.name:"" }}</td>
+      <td><button class="btn btn-xs {{ (log.value==1)?'btn-success':'btn-warning' }}">{{ (log.value==1)?"ON":"OFF"}}</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-lg-7">
+  <ngx-charts-line-chart
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="multi"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [autoScale]="autoScale"
+    (select)="onSelect($event)">
+  </ngx-charts-line-chart>
+</div>
