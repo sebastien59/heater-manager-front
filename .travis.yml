@@ -16,6 +16,6 @@ before_deploy:
 - ssh-add /tmp/deploy_rsa
 deploy:
 - provider: script
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist $SSH_USER@$SERVER_NS:$SSH_PATH
+  script: ng build --prod && rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist $SSH_USER@$SERVER_NS:$SSH_PATH
   on:
     branch: master
