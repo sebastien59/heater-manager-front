@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="tile col-lg-2 col-md-3">
+    <div class="x_panel">
+      <h2>Set temperature</h2>
+      <button class="btn btn-xs btn-warning" (click)="SetTemperature(false)">-</button>
+      <span class="temp_indicator">{{ temperature }}</span>
+      <button class="btn btn-xs btn-success" (click)="SetTemperature(true)">+</button>
+    </div>
+  </div>
+
+  <div class="tile col-lg-2 col-md-3">
+    <div class="x_panel">
+      <h2>Add a plug</h2>
+      <form>
+        <div class="form-group">
+          <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Name" #plugName/>
+          <input type="text" name="ip" id="ip" class="form-control input-sm" placeholder="IP Adress" #plugIp/>
+          <select class="form-control" #plugRoom>
+            <option *ngFor="let room of rooms" value="{{room.id}}">{{ room.name }}</option>
+          </select>
+          <button class="btn btn-sm col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-success" (click)="AddPlug(plugName.value, plugIp.value, plugRoom.value)">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="tile col-lg-2 col-md-3">
+    <div class="x_panel">
+      <h2>Add a sensor</h2>
+      <form>
+        <div class="form-group">
+          <input type="text" name="name" class="form-control input-sm" placeholder="Name" #name/>
+          <input type="text" name="ip" class="form-control input-sm" placeholder="IP Address" #ip/>
+          <select class="form-control" #room>
+            <option *ngFor="let room of rooms" value="{{room.id}}">{{ room.name }}</option>
+          </select>
+          <button class="btn btn-sm col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-success" (click)="AddSensor(name.value, ip.value, room.value)">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <app-logs></app-logs>
+</div>
