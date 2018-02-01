@@ -7,9 +7,9 @@ install:
 - npm install
 before_script:
 - echo -e "Host $SERVER_NS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-script: 
+script: ng build --prod
 before_deploy:
-- ng build --prod
+- ls -al
 - openssl aes-256-cbc -K $encrypted_ec85574b3970_key -iv $encrypted_ec85574b3970_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_rsa
