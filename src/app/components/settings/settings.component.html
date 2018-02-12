@@ -10,6 +10,15 @@
 
   <div class="tile col-lg-2 col-md-3">
     <div class="x_panel">
+      <h2>Set Minimum temperature</h2>
+      <button class="btn btn-xs btn-warning" (click)="SetMinTemperature(false)">-</button>
+      <span class="temp_indicator">{{ minTemperature }}</span>
+      <button class="btn btn-xs btn-success" (click)="SetMinTemperature(true)">+</button>
+    </div>
+  </div>
+
+  <div class="tile col-lg-2 col-md-3">
+    <div class="x_panel">
       <h2>Add a plug</h2>
       <form>
         <div class="form-group">
