@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SettingsComponent implements OnInit {
   temperature:number;
+  minTemperature:number;
   rooms:Room[];
 
   constructor(private toastr: ToastrService, private setupService:SetupService, private roomsService:RoomsService, private sensorsService:SensorsService,private plugsService:PlugsService) { }
@@ -21,6 +22,10 @@ export class SettingsComponent implements OnInit {
     this.setupService.getSetup("Temperature").subscribe((setupTemperature) =>{
       console.log(setupTemperature)
       this.temperature= +setupTemperature.value;
+    });
+
+    this.setupService.getSetup("MinTemperature").subscribe((MinTemperature) =>{
+      this.minTemperature= +MinTemperature.value;
     });
 
     this.roomsService.getRooms().subscribe((rooms) =>{
@@ -33,6 +38,13 @@ export class SettingsComponent implements OnInit {
     this.temperature=(order)?this.temperature+1:this.temperature-1;
     this.setupService.updateSetup("Temperature", this.temperature).subscribe((result)=>{
       console.log("data")
+    });
+  }
+
+  SetMinTemperature(order){
+    this.minTemperature=(order)?this.minTemperature+1:this.minTemperature-1;
+    this.setupService.updateSetup("MinTemperature", this.minTemperature).subscribe((result)=>{
+      console.log(result)
     });
   }
 
