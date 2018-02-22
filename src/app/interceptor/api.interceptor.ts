@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'reflect-metadata';
 import 'zone.js';
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
@@ -13,7 +14,7 @@ export class ApiInterceptor implements HttpInterceptor {
 
   intercept( req: HttpRequest<any>,  next: HttpHandler): Observable<HttpEvent<any>> {
     req = req.clone({
-      headers: req.headers.set('Authorization', "Basic "+btoa("sebastien:TUy7,j3("))
+      headers: req.headers.set('Authorization', environment.apiAuth)
     });
 
 
