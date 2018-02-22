@@ -11,8 +11,8 @@ before_script:
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_rsa
 - ssh-add /tmp/deploy_rsa
-- echo "$SFTP_CMD1" > batch
-- echo "$SFTP_CMD2" >> batch
+- echo "mget Projects/environment.prod.ts" > batch
+- echo "exit" >> batch
 - sftp -b batch $SSH_USER@$SERVER_NS
 - ls
 - mkdir src/environments/
