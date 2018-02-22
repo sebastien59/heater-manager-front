@@ -12,7 +12,7 @@ export class RoomsService {
 
   getRooms(){
     let headers: Headers = new Headers();
-    headers.append('Authorization', 'Basic ' + btoa("sebastien:***REMOVED***"));
+    headers.append('Authorization', environment.apiAuth);
     console.log(environment.apiUrl)
     return this.http.get(environment.apiUrl+'/rooms/',{headers: headers})
       .map(res => res.json());

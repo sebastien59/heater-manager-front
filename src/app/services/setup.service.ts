@@ -9,7 +9,7 @@ export class SetupService {
 
   constructor(private jsonp: Jsonp, public http:Http) {
     this.headers = new Headers();
-    this.headers.append('Authorization', 'Basic ' + btoa("sebastien:***REMOVED***"));
+    this.headers.append('Authorization', environment.apiAuth);
   }
 
   getSetup(name){
