@@ -10,7 +10,7 @@ export class SensorsService {
 
   getSensors(){
     let headers: Headers = new Headers();
-    headers.append('Authorization', 'Basic ' + btoa("sebastien:TUy7,j3("));
+    headers.append('Authorization', environment.apiAuth);
 
     return this.http.get(environment.apiUrl+'/sensors/',{headers: headers})
       .map(res => res.json());
@@ -18,7 +18,7 @@ export class SensorsService {
 
   addSensor(ip, name,room){
     let headers: Headers = new Headers();
-    headers.append('Authorization', 'Basic ' + btoa("sebastien:TUy7,j3("));
+    headers.append('Authorization', environment.apiAuth);
 
     return this.http.post(environment.apiUrl+'/sensors/',{ip:ip, name:name, room:environment.apiUrl+'/rooms/'+room},{headers: headers})
       .map(res => res.json());

@@ -10,7 +10,7 @@ export class PlugsService {
 
   updatePlug(plug){
     let headers: Headers = new Headers();
-    headers.append('Authorization', 'Basic ' + btoa("sebastien:TUy7,j3("));
+    headers.append('Authorization', environment.apiAuth);
     console.log(!plug.state);
     return this.http.put(environment.apiUrl+'/plugs/'+plug.id+'/',{ip: plug.ip,state:!plug.state},{headers: headers})
       .map(res => res.json());
@@ -18,7 +18,7 @@ export class PlugsService {
 
   addPlug(ip, name, room){
     let headers: Headers = new Headers();
-    headers.append('Authorization', 'Basic ' + btoa("sebastien:TUy7,j3("));
+    headers.append('Authorization', environment.apiAuth);
 
     return this.http.post(environment.apiUrl+'/plugs/',{ip:ip, name:name, room:environment.apiUrl+'/rooms/'+room},{headers: headers})
       .map(res => res.json());

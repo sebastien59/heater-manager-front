@@ -9,7 +9,7 @@ export class HttpClient {
   constructor(private jsonp: Jsonp, public http:Http) { }
 
   setAuthorizationHeader(header){
-    header.append('Authorization', 'Basic ' + btoa("sebastien:TUy7,j3("));
+    header.append('Authorization', environment.apiAuth);
     return header
   }
 
